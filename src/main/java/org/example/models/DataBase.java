@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class DataBase {
 
-    private ArrayList<Member> memberList;
+    private final ArrayList<Member> memberList;
 
     public DataBase() {
         this.memberList = new ArrayList<>();
@@ -27,16 +27,24 @@ public class DataBase {
 
     public boolean applicationVerification(Member newMember) {
 
+        int count = 0;
+
         if (newMember.getAge() < 18) {
             System.out.println("To young to register (must be at least 18 years old)");
-            return false;
+            count++;
         }
 
         if (!EmailValidator.getInstance().isValid(newMember.getEmail())) {
             System.out.println("Must have a valid email format");
-            return false;
+            count++;
         }
 
-        return true;
+        return count <= 0;
+    }
+
+    public void displayMembers() {
+        for (Member member : this.memberList) {
+            System.out.println(member);
+        }
     }
 }

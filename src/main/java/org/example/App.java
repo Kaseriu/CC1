@@ -10,20 +10,20 @@ public class App {
 
         DataBase dataBase = new DataBase();
 
-        Member member = new Member(
-                "Arthur",
-                "Matuszek",
-                18,
-                "a@a.com",
-                new Address(
-                        1,
-                        "rue",
-                        "ville"
+        dataBase.addNewMember(
+                new Member(
+                        "Arthur",
+                        "Matuszek",
+                        18,
+                        "a@a.com",
+                        new Address(
+                                1,
+                                "rue",
+                                "ville"
+                        )
                 )
         );
 
-        dataBase.addNewMember(member);
-
-        System.out.println(dataBase.getMemberList());
+        dataBase.displayMembers();
     }
 }
